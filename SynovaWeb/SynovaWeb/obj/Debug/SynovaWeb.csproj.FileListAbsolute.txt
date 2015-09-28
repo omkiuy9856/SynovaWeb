@@ -42,3 +42,4 @@ c:\users\y50\documents\visual studio 2015\Projects\SynovaWeb\SynovaWeb\bin\Antlr
 c:\users\y50\documents\visual studio 2015\Projects\SynovaWeb\SynovaWeb\bin\Newtonsoft.Json.xml
 c:\users\y50\documents\visual studio 2015\Projects\SynovaWeb\SynovaWeb\obj\Debug\SynovaWeb.dll
 c:\users\y50\documents\visual studio 2015\Projects\SynovaWeb\SynovaWeb\obj\Debug\SynovaWeb.pdb
+\\psf\Home\Documents\Visual Studio 2015\Projects\SynovaWeb\SynovaWeb\SynovaWeb\obj\Debug\SynovaWeb.csprojResolveAssemblyReference.cache
