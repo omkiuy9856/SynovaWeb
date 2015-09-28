@@ -1,0 +1,42 @@
+﻿@model SynovaWeb.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customers.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pickup_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pickup_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

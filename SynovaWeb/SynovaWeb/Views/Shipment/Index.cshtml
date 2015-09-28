@@ -1,0 +1,105 @@
+﻿@model IEnumerable<SynovaWeb.Models.Shipment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Booking.BookingID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.status_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipmentNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.receiver_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.receiver_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.receiver_zipcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.receiver_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipment_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pickup_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weight)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.BookingID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.status_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipmentNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.receiver_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.receiver_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.receiver_zipcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.receiver_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shipment_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pickup_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weight)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ShipmentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ShipmentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ShipmentID })
+        </td>
+    </tr>
+}
+
+</table>
