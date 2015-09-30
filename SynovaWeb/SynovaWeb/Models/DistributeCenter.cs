@@ -12,10 +12,13 @@ namespace SynovaWeb.Models
         [DisplayName("Shipment No.")]
         public int ShipmentID { get; set; }
         [DisplayName("User")]
-        public string UserID { get; set; }
+        public int UserID { get; set; }
         [DisplayName("Driver")]
-        public string DriverID { get; set; }
-
+        public int DriverID { get; set; }
+        public DateTime current_date { get; set; }
+        public int user_tel { get; set; }
+        public int driver_tel { get; set; }
+        public string route_name { get; set; }
 
         public virtual Driver Driver { get; set; }
         public virtual User User { get; set; }

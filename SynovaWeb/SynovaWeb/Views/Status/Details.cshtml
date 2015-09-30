@@ -18,6 +18,32 @@
             @Html.DisplayFor(model => model.status_name)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Shipment No.</th>
+                    <th>Customer</th>
+                </tr>
+                @foreach (var item in Model.Shipment)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShipmentNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Customer_name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <p>

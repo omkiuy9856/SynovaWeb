@@ -49,15 +49,22 @@ namespace SynovaWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingID,BookingNo,CustomerID,pickup_date")] Booking booking)
+        public ActionResult Create([Bind(Include = "BookingNo,CustomerID,pickup_date")] Booking booking)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Bookings.Add(booking);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                {
+                    db.Bookings.Add(booking);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "Name", booking.CustomerID);
             return View(booking);
         }

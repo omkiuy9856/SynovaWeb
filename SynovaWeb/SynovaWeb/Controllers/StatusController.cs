@@ -47,7 +47,7 @@ namespace SynovaWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StatusId,status_name")] Status status)
+        public ActionResult Create([Bind(Include = "StatusId,status_name,description")] Status status)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace SynovaWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StatusId,status_name")] Status status)
+        public ActionResult Edit([Bind(Include = "StatusId,status_name,description")] Status status)
         {
             if (ModelState.IsValid)
             {

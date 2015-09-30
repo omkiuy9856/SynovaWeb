@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Driver.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Shipment.Customer_name)
         </dt>
 
@@ -20,19 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserID)
+            @Html.DisplayNameFor(model => model.User.username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DriverID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DriverID)
+            @Html.DisplayFor(model => model.User.username)
         </dd>
 
     </dl>

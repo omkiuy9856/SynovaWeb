@@ -33,7 +33,30 @@
         <dd>
             @Html.DisplayFor(model => model.Tel)
         </dd>
-
+        <br />
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Bookings)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Booking No.</th>
+                    <th>Pickup Date</th>
+                </tr>
+                @foreach (var item in Model.Bookings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pickup_date)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <p>

@@ -11,21 +11,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Booking.BookingID)
+            @Html.DisplayNameFor(model => model.Booking.BookingNo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Booking.BookingID)
+            @Html.DisplayFor(model => model.Booking.BookingNo)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status.status_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status.status_name)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ShipmentNo)
         </dt>
@@ -33,15 +24,13 @@
         <dd>
             @Html.DisplayFor(model => model.ShipmentNo)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Customer_name)
+            @Html.DisplayNameFor(model => model.Status.status_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Customer_name)
+            @Html.DisplayFor(model => model.Status.status_name)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.receiver_name)
         </dt>
@@ -113,6 +102,16 @@
         <dd>
             @Html.DisplayFor(model => model.weight)
         </dd>
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.status_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.status_name)
+        </dd>
+
+        
 
     </dl>
 </div>

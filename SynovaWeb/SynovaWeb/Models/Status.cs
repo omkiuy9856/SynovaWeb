@@ -15,8 +15,9 @@ namespace SynovaWeb.Models
         public int StatusId { get; set; }
         [DisplayName("Status")]
         public string status_name { get; set; }
-        
-      
+        public string description { get; set; }
+
+
 
         public virtual ICollection<Shipment> Shipment { get; set; }
     }

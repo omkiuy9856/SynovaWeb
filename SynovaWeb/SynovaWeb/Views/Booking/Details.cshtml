@@ -33,7 +33,28 @@
         <dd>
             @Html.DisplayFor(model => model.pickup_date)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipments)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Shipment No.</th>
+                    <th>Status</th>
+                </tr>
+                @foreach (var item in Model.Shipments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShipmentNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status.status_name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <p>

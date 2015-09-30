@@ -141,6 +141,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509280310307_InitialCreate.cs" />
+    <Compile Include="Migrations\201509280310307_InitialCreate.Designer.cs">
+      <DependentUpon>201509280310307_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509280328063_StatusDescription.cs" />
+    <Compile Include="Migrations\201509280328063_StatusDescription.Designer.cs">
+      <DependentUpon>201509280328063_StatusDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509280638122_dcAttribute.cs" />
+    <Compile Include="Migrations\201509280638122_dcAttribute.Designer.cs">
+      <DependentUpon>201509280638122_dcAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509300337188_updateDC.cs" />
+    <Compile Include="Migrations\201509300337188_updateDC.Designer.cs">
+      <DependentUpon>201509300337188_updateDC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DistributeCenter.cs" />
@@ -196,11 +213,6 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\DistributeCenter\Create.cshtml" />
-    <Content Include="Views\DistributeCenter\Delete.cshtml" />
-    <Content Include="Views\DistributeCenter\Details.cshtml" />
-    <Content Include="Views\DistributeCenter\Edit.cshtml" />
-    <Content Include="Views\DistributeCenter\Index.cshtml" />
     <Content Include="Views\Driver\Create.cshtml" />
     <Content Include="Views\Driver\Delete.cshtml" />
     <Content Include="Views\Driver\Details.cshtml" />
@@ -216,16 +228,21 @@
     <Content Include="Views\Shipment\Details.cshtml" />
     <Content Include="Views\Shipment\Edit.cshtml" />
     <Content Include="Views\Shipment\Index.cshtml" />
-    <Content Include="Views\Status\Create.cshtml" />
-    <Content Include="Views\Status\Delete.cshtml" />
-    <Content Include="Views\Status\Details.cshtml" />
-    <Content Include="Views\Status\Edit.cshtml" />
-    <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\DistributeCenter\Create.cshtml" />
+    <Content Include="Views\DistributeCenter\Delete.cshtml" />
+    <Content Include="Views\DistributeCenter\Details.cshtml" />
+    <Content Include="Views\DistributeCenter\Edit.cshtml" />
+    <Content Include="Views\DistributeCenter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -237,6 +254,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201509280310307_InitialCreate.resx">
+      <DependentUpon>201509280310307_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509280328063_StatusDescription.resx">
+      <DependentUpon>201509280328063_StatusDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509280638122_dcAttribute.resx">
+      <DependentUpon>201509280638122_dcAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509300337188_updateDC.resx">
+      <DependentUpon>201509300337188_updateDC.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

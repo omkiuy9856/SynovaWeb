@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using SynovaWeb.DAL;
 using SynovaWeb.Models;
+using System.Data.Entity.Core.Objects;
+using System.Web.UI;
 
 namespace SynovaWeb.Controllers
 {
@@ -15,11 +17,43 @@ namespace SynovaWeb.Controllers
     {
         private SynovaWebContext db = new SynovaWebContext();
 
-        // GET: Shipment
-        public ActionResult Index()
+        public string getQuery(int booking_no)
         {
-            var shipments = db.Shipments.Include(s => s.Booking).Include(s => s.Status);
-            return View(shipments.ToList());
+            //HttpContext.Response.Write("<script>alert('" + booking_no + "');</script>");
+            var b_no = booking_no;
+            var customer_name="";
+            var bookings = db.Bookings.ToList();
+            var query = from Booking in bookings
+                        where Booking.BookingID == b_no
+                        select new
+                        {
+                            zzz = Booking.Customers.Name
+                        };
+          
+            foreach (var Booking in query)
+            {
+                customer_name = Booking.zzz;
+            }
+            
+            return customer_name;
+        }
+
+        // GET: Shipment
+        public ActionResult Index(string searchString)
+        {
+            var shipments = from s in db.Shipments
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var number = Convert.ToInt32(searchString);
+                //HttpContext.Response.Write("<script>alert('" + number + "');</script>");
+
+                shipments = shipments.Where(s => s.Customer_name.Contains(searchString));
+               
+                    //db.Shipments.Include(s => s.Booking).Include(s => s.Status);  
+            }
+           // var shipments = db.Shipments.Include(s => s.Booking).Include(s => s.Status);
+            return View(shipments);
         }
 
         // GET: Shipment/Details/5
@@ -40,8 +74,10 @@ namespace SynovaWeb.Controllers
         // GET: Shipment/Create
         public ActionResult Create()
         {
-            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingID");
+            
+            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingNo");
             ViewBag.StatusID = new SelectList(db.Status, "StatusId", "status_name");
+            
             return View();
         }
 
@@ -54,12 +90,13 @@ namespace SynovaWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                shipment.Customer_name = getQuery(shipment.BookingID);  
                 db.Shipments.Add(shipment);
-                db.SaveChanges();
+                db.SaveChanges();  
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingID", shipment.BookingID);
+            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingNo", shipment.BookingID);
             ViewBag.StatusID = new SelectList(db.Status, "StatusId", "status_name", shipment.StatusID);
             return View(shipment);
         }
@@ -76,7 +113,7 @@ namespace SynovaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingID", shipment.BookingID);
+            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingNo", shipment.BookingID);
             ViewBag.StatusID = new SelectList(db.Status, "StatusId", "status_name", shipment.StatusID);
             return View(shipment);
         }
@@ -90,11 +127,12 @@ namespace SynovaWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                shipment.Customer_name = getQuery(shipment.BookingID);
                 db.Entry(shipment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingID", shipment.BookingID);
+            ViewBag.BookingID = new SelectList(db.Bookings, "BookingID", "BookingNo", shipment.BookingID);
             ViewBag.StatusID = new SelectList(db.Status, "StatusId", "status_name", shipment.StatusID);
             return View(shipment);
         }

@@ -18,7 +18,7 @@ namespace SynovaWeb.Controllers
         // GET: DistributeCenter
         public ActionResult Index()
         {
-            var distributeCenters = db.DistributeCenters.Include(d => d.Shipment);
+            var distributeCenters = db.DistributeCenters.Include(d => d.Driver).Include(d => d.Shipment).Include(d => d.User);
             return View(distributeCenters.ToList());
         }
 
@@ -40,7 +40,9 @@ namespace SynovaWeb.Controllers
         // GET: DistributeCenter/Create
         public ActionResult Create()
         {
-            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "Customer_name");
+            ViewBag.DriverID = new SelectList(db.Drivers, "DriverId", "name");
+            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "ShipmentNo");
+            ViewBag.UserID = new SelectList(db.Users, "UserId", "name");
             return View();
         }
 
@@ -58,7 +60,9 @@ namespace SynovaWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "Customer_name", distributeCenter.ShipmentID);
+            ViewBag.DriverID = new SelectList(db.Drivers, "DriverId", "name", distributeCenter.DriverID);
+            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "ShipmentNo", distributeCenter.ShipmentID);
+            ViewBag.UserID = new SelectList(db.Users, "UserId", "name", distributeCenter.UserID);
             return View(distributeCenter);
         }
 
@@ -74,7 +78,9 @@ namespace SynovaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "Customer_name", distributeCenter.ShipmentID);
+            ViewBag.DriverID = new SelectList(db.Drivers, "DriverId", "name", distributeCenter.DriverID);
+            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "ShipmentNo", distributeCenter.ShipmentID);
+            ViewBag.UserID = new SelectList(db.Users, "UserId", "name", distributeCenter.UserID);
             return View(distributeCenter);
         }
 
@@ -91,7 +97,9 @@ namespace SynovaWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "Customer_name", distributeCenter.ShipmentID);
+            ViewBag.DriverID = new SelectList(db.Drivers, "DriverId", "name", distributeCenter.DriverID);
+            ViewBag.ShipmentID = new SelectList(db.Shipments, "ShipmentID", "ShipmentNo", distributeCenter.ShipmentID);
+            ViewBag.UserID = new SelectList(db.Users, "UserId", "name", distributeCenter.UserID);
             return View(distributeCenter);
         }
 

@@ -15,6 +15,32 @@ namespace SynovaWeb.Controllers
     {
         private SynovaWebContext db = new SynovaWebContext();
 
+        public string getQuery()
+        {
+
+            var test = "";
+            var bookings = db.Bookings.ToList();
+            var routes = db.Routes.ToList();
+            var shipments = db.Shipments.ToList();
+            var query = from Route in routes
+                        where Route.area == "987"
+                        select new
+                        {
+                            zzz = Route.name
+                        };
+
+            foreach (var Route in query)
+            {
+                test = Route.zzz;
+            }
+         
+            return test;
+        }
+        public void getQQ()
+        {      
+            HttpContext.Response.Write("<script>alert('4564654');</script>");
+            RedirectToAction("Index");
+        }
         // GET: Route
         public ActionResult Index()
         {
@@ -49,10 +75,12 @@ namespace SynovaWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,name,area")] Route route)
         {
+          
             if (ModelState.IsValid)
             {
+                route.name = getQuery();
                 db.Routes.Add(route);
-                db.SaveChanges();
+                db.SaveChanges();       
                 return RedirectToAction("Index");
             }
 
